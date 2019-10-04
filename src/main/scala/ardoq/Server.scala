@@ -25,7 +25,8 @@ object Server extends App {
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executor: ExecutionContext = system.dispatcher
 
-  val bindingFuture = Http().bindAndHandle(calcRoutes, "0.0.0.0", 8080)
+  val port: Int = sys.env.getOrElse("PORT", "8080").toInt
+  val bindingFuture = Http().bindAndHandle(calcRoutes, "0.0.0.0", port)
 
   println(s"Server online!")
   // StdIn.readLine() // let it run until user presses return
