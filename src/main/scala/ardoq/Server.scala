@@ -21,19 +21,15 @@ import akka.stream.ActorMaterializer
 object Server extends App {
   import CalcRoutes._
 
-  // val config: Config = ConfigFactory.load("application.conf")
-  // val host = config.getString("dev.server.host")
-  // val port = config.getInt("dev.server.port")
-
   implicit val system: ActorSystem = ActorSystem("resttest")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
   implicit val executor: ExecutionContext = system.dispatcher
 
-  val bindingFuture = Http().bindAndHandle(calcRoutes, "localhost", 8080)
+  val bindingFuture = Http().bindAndHandle(calcRoutes, "0.0.0.0", 8080)
 
-  println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
-  StdIn.readLine() // let it run until user presses return
-  bindingFuture
-    .flatMap(_.unbind()) // trigger unbinding from the port
-    .onComplete(_ => system.terminate()) // and shutdown when done
+  println(s"Server online!")
+  // StdIn.readLine() // let it run until user presses return
+  // bindingFuture
+  //   .flatMap(_.unbind()) // trigger unbinding from the port
+  //   .onComplete(_ => system.terminate()) // and shutdown when done
 }
