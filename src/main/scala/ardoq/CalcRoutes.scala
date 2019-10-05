@@ -14,7 +14,6 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.ContentTypes._
 import akka.http.scaladsl.model.headers.`Content-Type`
 
-// import com.typesafe.config.{Config, ConfigFactory}
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 
 object CalcRoutes extends ArithmeticParser with FailFastCirceSupport {
@@ -25,10 +24,10 @@ object CalcRoutes extends ArithmeticParser with FailFastCirceSupport {
   lazy val calcRoutes: Route =
     get {
       pathSingleSlash {
-        complete {
-          HttpEntity(ContentTypes.`text/html(UTF-8)`, "Hello, world!")
-        }
-      }
+        getFromResource("index.html")
+      } ~
+        // All other get requests attempt to fetch resources
+        getFromResourceDirectory("")
     } ~
       post {
         path("evaluate")

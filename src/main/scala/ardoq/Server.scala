@@ -29,8 +29,4 @@ object Server extends App {
   val bindingFuture = Http().bindAndHandle(calcRoutes, "0.0.0.0", port)
 
   println(s"Server online!")
-  // StdIn.readLine() // let it run until user presses return
-  // bindingFuture
-  //   .flatMap(_.unbind()) // trigger unbinding from the port
-  //   .onComplete(_ => system.terminate()) // and shutdown when done
 }
