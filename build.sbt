@@ -3,6 +3,7 @@ lazy val akkaVersion    = "2.5.23"
 lazy val circeVersion = "0.10.0"
 
 enablePlugins(JavaAppPackaging)
+scalacOptions += "-Ywarn-unused"
 
 lazy val root = (project in file(".")).
 settings(

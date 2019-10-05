@@ -1,19 +1,8 @@
 package ardoq
 
-import akka.actor.{ ActorRef, ActorSystem }
-import akka.event.Logging
-
-import scala.concurrent.duration._
 import akka.http.scaladsl.server.Directives._
-import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
-
-import io.circe._, io.circe.generic.auto._
-
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.ContentTypes._
-import akka.http.scaladsl.model.headers.`Content-Type`
-
+import io.circe.generic.auto._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 
 object CalcRoutes extends ArithmeticParser with FailFastCirceSupport {
