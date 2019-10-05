@@ -5,6 +5,7 @@ Hosted here: http://peaceful-ocean-71245.herokuapp.com/
 The first task is stored as python/highest_product_of_3.py.
 
 Assumption made: All arrays passed are valid (len >= 3, numbers only).
+
 Note: Implementing this in linear time is fairly straightforward, but I figured doing it with a sort would be more legible.
 
 
